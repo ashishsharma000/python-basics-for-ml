@@ -1,0 +1,41 @@
+## How Python Code Runs on a Computer
+
+"""To understand Python properly, it is important to know **how Python code is executed internally**."""
+
+### Step-by-Step Execution Flow
+
+"""
+1. The programmer writes Python source code (`.py` file).
+2. Python first **compiles the source code into bytecode** (`.pyc`).
+   - This is done automatically by Python.
+   - Bytecode is an intermediate, platform-independent form.
+3. The bytecode is sent to the **Python Virtual Machine (PVM)**.
+4. The PVM **interprets the bytecode line by line**.
+5. The Operating System helps by:
+   - Managing memory
+   - Handling input/output
+   - Scheduling the Python process on the CPU
+6. The CPU executes the instructions and the **output is produced**.
+"""
+
+### Important Points
+"""
+- Python is both **compiled and interpreted**
+- Compilation → source code to bytecode
+- Interpretation → bytecode executed line by line
+- The programmer never manually handles `.pyc` files
+"""
+
+### Execution Flow (Simplified)
+"""
+Python Code (.py)
+↓
+Bytecode (.pyc)
+↓
+Python Virtual Machine (PVM)
+↓
+CPU + OS
+↓
+Output
+
+"""

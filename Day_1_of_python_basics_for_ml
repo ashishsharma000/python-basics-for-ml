@@ -39,3 +39,606 @@ CPU + OS
 Output
 
 """
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Comments in Python
+"""
+Comments are used to **explain code** and make programs more readable.
+They are **ignored by the Python interpreter** and do not affect program execution.
+"""
+
+
+### 1️⃣ Single-Line Comments
+"""
+Single-line comments start with the `#` symbol.
+"""
+
+### This is multiline comments 
+
+#1.
+# this is 
+# multi line 
+# comments
+
+""" 2.
+this is also a 
+multi line 
+comment using quotes
+"""
+
+'''3.
+this is also 
+a multi line 
+comment using single quotes.
+'''
+### Docstring
+"""
+the docstrings are the multiline comments that are used to give information 
+about any function or model or class 
+"""
+
+"""
+def sum():
+    '''this is a docstring discribing about the sum function.'''
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## How `input()` Works Internally in Python
+"""
+When you use `input()`, the program **pauses until the user enters data**.  
+This happens because Python, the OS, and the CPU all work together.
+"""
+
+
+### Step-by-Step Flow
+"""
+1. **Python Program Reaches `input()`**
+   - The interpreter **stops executing further instructions**.
+   - The program is now in a **waiting state**.
+
+2. **Operating System Takes Control**
+   - OS manages **process scheduling**.
+   - Python process is paused, and the CPU can work on other tasks.
+   - OS waits for **keyboard input** from the user.
+
+3. **User Enters Data**
+   - The keyboard sends the data to the OS.
+   - OS stores this input in **memory buffers** temporarily.
+
+4. **Python Interpreter Resumes**
+   - OS passes the user input from the buffer to the Python process.
+   - Python stores the input as a **string** in the variable you defined.
+
+5. **Program Continues Execution**
+   - After storing the input, Python moves to the next line of code.
+   - CPU executes instructions, and `print()` or other operations continue.
+
+---
+"""
+
+### Memory & CPU Notes
+"""
+- Input is stored in **RAM** as a string.
+- CPU executes Python instructions **line by line**.
+- `input()` is called a **blocking function** because the CPU waits for user input.
+- OS ensures **other processes** can run while your program waits.
+
+---
+"""
+### Example Code
+"""
+```python
+name = input("Enter your name: ")  # Program pauses here
+print("Hello,", name)               # Executes after input
+
+"""
+### taking user input using input function 
+age = input("enter your age:")
+print(age)
+# python stores the input as string but we can change the stored input from string to any datatype we want
+ 
+age1 = int(input("enter you age:"))
+age2 = float(input("enter your weight:"))
+print(age1)
+print(age2)
+
+# int(age)  ==  int(input("enter your age:")) this is know as typecasting. will understand this further in detail.
+
+    
+    
+"""
+### Notes
+"Docstrings are accessible at runtime via .__doc__"
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Python Basics: Variables, Memory, and Assignment
+
+"""
+This file demonstrates:
+- Variables and memory allocation
+- Multiple assignment and reassignment
+- Local and global variables
+"""
+
+# -------------------------------
+# 1What is a Variable?
+# -------------------------------
+
+# Variables are symbolic names that store data in memory
+age = 20
+name = "Ashish"
+
+# Key Points:
+"""
+- Variables in Python are references, not containers
+- Multiple variables can point to the same memory location
+- Reassigning a variable creates a new memory block
+- Memory no longer referenced becomes garbage, handled automatically
+- Python does not have uninitialized garbage values like C/C++
+"""
+
+# -------------------------------
+# 2️ Memory Allocation Example
+# -------------------------------
+
+"""
+Memory Diagram:
+
+x = 4                 x ------>|4*(memory block)*|
+y = 4                 x ------>|4*(memory block)*|<------y
+
+x = 6                 x ------>|6*(new memory block)|
+                       garbage memory block  ------  |4*(memory block)|
+y = x                 x ---------->|6*(new memory block)|<---------- y
+"""
+
+# -------------------------------
+# 3️ Multiple Assignment
+# -------------------------------
+x, y, z = 1, 2, 3
+
+# Reassignment
+x = x + 10
+
+print("Variables after assignment:")
+print("age =", age, "name =", name, "x =", x, "y =", y, "z =", z)
+
+# -------------------------------
+# 4️ Local Variables
+# -------------------------------
+
+"""
+- A local variable is defined inside a function
+- Accessible only within that function
+- Created when the function is called, destroyed after the function ends
+"""
+
+def local_example():
+    x = 10  # local variable
+    print("Inside function:", x)
+
+local_example()
+# print(x)  # ❌ Error: x is not defined outside the function
+
+# -------------------------------
+# 5️ Global Variables
+# -------------------------------
+
+"""
+- A global variable is defined outside all functions
+- Accessible from anywhere in the program
+"""
+
+x = 50  # global variable
+
+def global_example():
+    print("Inside function:", x)
+
+global_example()
+print("Outside function:", x)
+
+# -------------------------------
+# 6️ Modifying Global Variables inside Functions
+# -------------------------------
+
+"""
+- By default, assigning inside a function creates a local variable
+- Use `global` keyword to modify the global variable
+"""
+
+x = 10  # global variable
+
+def change_global():
+    global x
+    x = 20  # modifies the global variable
+
+change_global()
+print("Global variable after modification:", x)
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Python Operators 
+
+Operators are **symbols or special characters** that perform operations on values or variables.  
+
+Python has several types of operators:
+
+---
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+OPERATORS IN PYTHON ...........................
+
+## Arithmetic Operators in Python
+
+"""Arithmetic operators are used to perform **mathematical operations** on numbers.
+
+| Operator | Description       | Example       |
+|----------|-----------------|---------------|
+| `+`      | Addition         | `5 + 3`       |
+| `-`      | Subtraction      | `5 - 3`       |
+| `*`      | Multiplication   | `5 * 3`       |
+| `/`      | Division         | `5 / 2`       |
+| `//`     | Floor Division   | `5 // 2`      |
+| `%`      | Modulus          | `5 % 2`       |
+| `**`     | Exponent         | `5 ** 2`      |
+
+---
+"""
+# Arithmetic Operators – One Example for All
+
+a = 15
+b = 4
+
+# Addition
+print("a + b =", a + b)    # 19
+
+# Subtraction
+print("a - b =", a - b)    # 11
+
+# Multiplication
+print("a * b =", a * b)    # 60
+
+# True Division
+print("a / b =", a / b)    # 3.75
+
+# Floor Division
+print("a // b =", a // b)  # 3
+
+# Modulus (Remainder)
+print("a % b =", a % b)    # 3
+
+# Exponent
+print("a ** b =", a ** b)  # 50625
+
+
+### 1️True Division `/`
+"""
+- Returns a **floating-point result** (decimal), even if both numbers are integers.
+- Example:
+
+```python
+"""
+x = 5
+y = 2
+
+print(x / y)  # 2.5
+print(4 / 2)  # 2.0 (still float)
+
+##notes
+"""
+/ always gives a float
+
+The result includes decimal part, even if divisible evenly
+
+Uses standard division, like in math
+"""
+
+##Floor Division //
+
+"""Returns the largest integer less than or equal to the result.
+
+Also called integer division.
+"""
+
+x = 5
+y = 2
+
+print(x // y)  # 2
+print(4 // 2)  # 2
+print(-5 // 2) # -3
+
+
+
+a = 15
+b = 4
+
+# True division
+result1 = a / b
+print("a / b =", result1)  # 3.75
+
+# Floor division
+result2 = a // b
+print("a // b =", result2) # 3
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------
+# Comparison Operators in Python
+
+"""
+Comparison operators are used to **compare two values**.
+They always return a **Boolean value**: True or False.
+"""
+
+a = 10
+b = 20
+
+# Equal ==
+print("a == b:", a == b)  # False
+
+# Not equal !=
+print("a != b:", a != b)  # True
+
+# Greater than >
+print("a > b:", a > b)    # False
+
+# Less than <
+print("a < b:", a < b)    # True
+
+# Greater than or equal >=
+print("a >= b:", a >= b)  # False
+
+# Less than or equal <=
+print("a <= b:", a <= b)  # True
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------------
+
+# Logical Operators in Python
+
+"""
+Logical operators are used to **combine multiple conditions**.
+They always return a **Boolean value**: True or False.
+"""
+
+a = True
+b = False
+
+# AND operator
+print("a and b:", a and b)  # False
+# True only if BOTH a and b are True
+
+# OR operator
+print("a or b:", a or b)    # True
+# True if at least ONE of a or b is True
+
+# NOT operator
+print("not a:", not a)      # False
+# Reverses the Boolean value
+print("not b:", not b)      # True
+
+# -------------------------------
+# Example with numbers
+# -------------------------------
+x = 10
+y = 5
+z = 20
+
+print("x > y and x < z:", x > y and x < z)   # True
+print("x > y or x > z:", x > y or x > z)     # True
+print("not (x > y):", not (x > y))           # False
+
+
+#Notes:
+
+"""
+and → True only if both conditions are True
+
+or → True if at least one condition is True
+
+not → Reverses the Boolean value (True → False, False → True)
+"""
+#----------------------------------------------------------------------------------------------------------------------------------------------
+# Bitwise Operators in Python
+
+"""
+Bitwise operators are used to perform operations on **binary representations** of integers.
+"""
+
+a = 5   # in binary: 0101
+b = 3   # in binary: 0011
+
+# AND operator &
+print("a & b =", a & b)   # 1 (0101 & 0011 = 0001)
+
+# OR operator |
+print("a | b =", a | b)   # 7 (0101 | 0011 = 0111)
+
+# XOR operator ^
+print("a ^ b =", a ^ b)   # 6 (0101 ^ 0011 = 0110)
+
+# NOT operator ~
+print("~a =", ~a)         # -6 (inverts all bits, 2's complement)
+
+# Left shift <<
+print("a << 1 =", a << 1) # 10 (0101 << 1 = 1010)
+
+# Right shift >>
+print("a >> 1 =", a >> 1) # 2  (0101 >> 1 = 0010)
+
+#-----------------------------------------------------------------------------
+"""
+Left Shift <<
+
+Shifts the bits of a number to the left by the specified number of positions.
+
+New bits on the right are filled with 0.
+
+Effect: multiplies the number by 2 for each shift.
+
+important::
+a << n = a * (2 ** n)
+
+Shifting left increases the number
+
+
+"""
+a = 5           # binary: 0101
+
+# Left shift by 1
+b = a << 1
+print(b)        # 10
+# Explanation: 0101 << 1 = 1010 (binary) = 10 decimal
+
+# Left shift by 2
+c = a << 2
+print(c)        # 20
+# Explanation: 0101 << 2 = 10100 (binary) = 20 decimal
+
+
+"""Right Shift >>
+
+Shifts the bits of a number to the right by the specified number of positions.
+
+Effect: divides the number by 2 for each shift, floor division.
+
+Sign bit (leftmost) is preserved for negative numbers
+
+IMPORTANT 
+a >> n = a // (2 ** n)
+
+Shifting right reduces the number
+"""
+
+a = 20          # binary: 10100
+
+# Right shift by 1
+b = a >> 1
+print(b)        # 10
+# Explanation: 10100 >> 1 = 1010 (binary) = 10 decimal
+
+# Right shift by 2
+c = a >> 2
+print(c)        # 5
+# Explanation: 10100 >> 2 = 101 (binary) = 5 decimal
+
+
+
+"""
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Membership Operators
+
+Used to check if a value exists in a sequence (like list, tuple, string, or set).
+
+Returns True or False.
+
+Operator	Meaning
+in	True if value is present
+not in	True if value is NOT present
+
+"""
+
+#Examples:
+
+# Membership in a list
+fruits = ["apple", "banana", "mango"]
+
+print("apple" in fruits)     # True
+print("grape" in fruits)     # False
+print("grape" not in fruits) # True
+
+# Membership in a string
+text = "Hello World"
+print("Hello" in text)       # True
+print("Python" not in text)  # True
+
+#------------------------------------------------------------------------------------------------------------------------------------
+###Ternary Operator (Conditional Expression)
+
+"""A short way to write an if-else statement in one line"""
+##syntax
+
+##      value_if_true if condition else value_if_false
+
+#example:
+age = 18
+
+# Traditional if-else
+if age >= 18:
+    status = "Adult"
+else:
+    status = "Minor"
+print(status)  # Adult
+
+# Using ternary operator
+status = "Adult" if age >= 18 else "Minor"
+print(status)  # Adult
+
+
+# Assignment Operators in Python
+
+"""
+Assignment operators are used to **assign values to variables**.
+Some operators combine **arithmetic operations with assignment**.
+"""
+
+# 1️ Basic assignment
+x = 10  # Assign 10 to x
+print("x =", x)
+
+# 2️ Addition assignment (x = x + 5)
+x += 5
+print("x += 5 ->", x)  # 15
+
+# 3️ Subtraction assignment (x = x - 3)
+x -= 3
+print("x -= 3 ->", x)  # 12
+
+# 4️ Multiplication assignment (x = x * 2)
+x *= 2
+print("x *= 2 ->", x)  # 24
+
+# 5️ Division assignment (x = x / 4)
+x /= 4
+print("x /= 4 ->", x)  # 6.0 (float)
+
+# 6️ Floor division assignment (x = x // 3)
+x //= 3
+print("x //= 3 ->", x)  # 2.0
+
+# 7️ Modulus assignment (x = x % 2)
+x %= 2
+print("x %= 2 ->", x)  # 0.0
+
+# 8️ Exponent assignment (x = x ** 3)
+x **= 3
+print("x **= 3 ->", x)  # 0.0
+
+
+#Difference between == and is operaotr 
+"""
+== → compares values
+
+is → compares memory identity"""
+
+#== Operator (Equality Operator)
+
+# Checks if the values of two objects are equal.
+
+# Does not care if they are the same object in memory.
+a = [1, 2, 3]
+b = [1, 2, 3]
+
+print(a == b)  # True, because the values inside the lists are equal
+print(a is b)  # False, because they are different objects in memory
+
+
+#is Operator (Identity Operator)
+
+# Checks if the two variables point to the same object in memory.
+
+# True only if both variables reference the exact same object.
+a = [1, 2, 3]
+b = a       # b points to the same object as a
+
+print(a is b)  # True, same object
+print(a == b)  # True, values are equal too
